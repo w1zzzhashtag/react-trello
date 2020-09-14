@@ -29,6 +29,7 @@ const DashboardPopup:React.FC<IProps> = ({closePopup, popupStatus}) => {
         })
     }
     
+    // TODO: Сделать простенькую валидацию
     const handleSubmit = (event:React.FormEvent) => {
         event.preventDefault()
         if(values.name.trim() !== '') {
@@ -38,8 +39,7 @@ const DashboardPopup:React.FC<IProps> = ({closePopup, popupStatus}) => {
                 desc: '',
                 imageUrl: ''
             })
-        }
-        
+        }    
     }
 
     return (
@@ -60,7 +60,7 @@ const DashboardPopup:React.FC<IProps> = ({closePopup, popupStatus}) => {
                             value={values.name} />
                     </div>
                     <div className="input-field dashboard-popup__input">
-                        <label htmlFor="desc" >Description dashboard</label>
+                        <label htmlFor="desc">Description dashboard</label>
                         <input 
                             type="text" 
                             name="desc" 
