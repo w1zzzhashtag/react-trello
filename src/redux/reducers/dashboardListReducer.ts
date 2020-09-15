@@ -41,6 +41,14 @@ const dashboardListReducer = (state = initialState, action: dashboardListActionT
                 ]
                 
             }
+        case 'REMOVE_DASHBOARD':
+            return {
+                items: state.items.filter(item => {
+                    if(item.id !== action.payload) {
+                        return item
+                    }
+                })
+            }
         default: return state
     }
 }

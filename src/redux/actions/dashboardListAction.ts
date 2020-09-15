@@ -12,4 +12,16 @@ export const addDashboard = (data:IDashboardPayload):IAddDashboard => {
     }
 }
 
-export type dashboardListActionType = IAddDashboard
+
+export interface IRemoveDashboard {
+    type: 'REMOVE_DASHBOARD'
+    payload: number
+}
+export const removeDashboard = (id:number):IRemoveDashboard => {
+    return {
+        type: 'REMOVE_DASHBOARD',
+        payload: id
+    }
+}
+
+export type dashboardListActionType = IAddDashboard | IRemoveDashboard
