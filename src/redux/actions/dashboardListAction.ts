@@ -1,4 +1,4 @@
-import {IDashboardPayload} from './../../types/dashboardListTypes'
+import {IDashboardPayload, IStateItems} from './../../types/dashboardListTypes'
 
 
 export interface IAddDashboard {
@@ -24,4 +24,16 @@ export const removeDashboard = (id:number):IRemoveDashboard => {
     }
 }
 
-export type dashboardListActionType = IAddDashboard | IRemoveDashboard
+
+export interface ISelectActallyDashboard {
+    type: 'SELECT_ACTUALLY_DASHBOARD'
+    payload: number
+}
+export const selectActallyDashboard = (id:number):ISelectActallyDashboard => {
+    return {
+        type: 'SELECT_ACTUALLY_DASHBOARD',
+        payload: id
+    }
+}
+
+export type dashboardListActionType = IAddDashboard | IRemoveDashboard | ISelectActallyDashboard

@@ -147,3 +147,66 @@ code {
   }
 }
 
+.d-act {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  &__img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+  &__container {
+    width: 100%;
+    position: relative;
+    top: 500px;
+    height: 1000px;
+    background-color: #fff;
+  }
+  &__inner {
+    // width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 1rem 0;
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 5px;
+    box-shadow: .25em .25em .5em rgba(#000, .2);
+    padding: 0.5rem 1rem 1rem;
+    border: 1px solid #e1e1e1;
+    background-color: #fff;
+    margin-right: 2rem;
+    &-title {
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    &-item {
+      width: 300px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      position: relative;
+      margin-bottom: 1.5rem;
+      span {
+        width: 260px;
+        line-height: 1.1em !important;
+        height: auto !important;
+      }
+      i {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}

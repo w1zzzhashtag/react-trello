@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux'
 import dashboardListReducer from './dashboardListReducer'
 
+
 const rootReducer = combineReducers({
-    dashboardList: dashboardListReducer
+    dashboardList: dashboardListReducer,
 })
 
 export type rootState = ReturnType<typeof rootReducer>
