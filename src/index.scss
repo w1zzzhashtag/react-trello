@@ -187,25 +187,28 @@ code {
     border: 1px solid #e1e1e1;
     background-color: #fff;
     margin-right: 2rem;
+    width: 300px;
     &-title {
       margin-bottom: 1rem;
       font-weight: bold;
     }
     &-item {
-      width: 300px;
+      width: 240px;
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
       position: relative;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       span {
-        width: 260px;
+        width: 100%;
         line-height: 1.1em !important;
         height: auto !important;
       }
       i {
         position: absolute;
-        right: 0;
+        left: 100%;
+        cursor: pointer;
+        z-index: 999;
       }
     }
   }

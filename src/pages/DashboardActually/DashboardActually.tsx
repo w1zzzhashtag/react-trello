@@ -2,7 +2,7 @@ import React from 'react'
 import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {selectActallyDashboard} from './../../redux/actions/dashboardListAction'
+import {selectActallyDashboard, ToggleTodoCopleted} from './../../redux/actions/dashboardListAction'
 
 import {rootState} from './../../redux/reducers/rootReducer'
 
@@ -16,6 +16,10 @@ const DashboardActually = () => {
 
     const actuallyDashboard = useSelector((state: rootState) => state.dashboardList.current)
     
+    const todoCompletedChange = (itemId: number, sectionId: number, todoId: number) => {
+        dispatch(ToggleTodoCopleted(itemId, sectionId, todoId))
+    }
+
     return (
         <>
             {actuallyDashboard?.map(item => (
@@ -36,7 +40,11 @@ const DashboardActually = () => {
                                         </h6>
                                         {section.todos.map(todo => (
                                             <label className="d-act__section-item" key={todo.id}>
-                                                <input type="checkbox" />
+                                                <input 
+                                                    type="checkbox" 
+                                                    checked={todo.completed}
+                                                    onChange={() => todoCompletedChange(item.id,section.id, todo.id)}
+                                                />
                                                 <span>{todo.name}</span>
                                                 <i className="material-icons">delete</i>
                                             </label>

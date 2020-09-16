@@ -1,7 +1,7 @@
 
 export interface IState {
     items: IStateItems[]
-    current: null | IStateItems[]
+    current: null | IStateItems[] | undefined
 }
 
 export interface IStateItems {

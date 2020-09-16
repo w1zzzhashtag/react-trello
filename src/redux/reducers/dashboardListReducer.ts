@@ -78,7 +78,6 @@ const dashboardListReducer = (state = initialState, action: dashboardListActionT
                         ...action.payload
                     }
                 ]
-                
             }
         case 'REMOVE_DASHBOARD':
             return {
@@ -96,6 +95,26 @@ const dashboardListReducer = (state = initialState, action: dashboardListActionT
                     if(item.id === action.payload) {
                         return item
                     }
+                })
+            }
+        case 'TOOGLE_TODO_COMPLETED':
+            return {
+                ...state,
+                current: state.current?.map(item => {
+                    if(item.id === action.payload.itemId) {
+                        item.sections.map(section => {
+                            if(section.id === action.payload.sectionId) {
+                                section.todos.map(todo => {
+                                    if(todo.id === action.payload.todoId) {
+                                        todo.completed = !todo.completed
+                                    }
+                                    return todo
+                                })
+                            }
+                            return section
+                        })
+                    }
+                    return item
                 })
             }
         default: return state

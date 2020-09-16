@@ -36,4 +36,33 @@ export const selectActallyDashboard = (id:number):ISelectActallyDashboard => {
     }
 }
 
-export type dashboardListActionType = IAddDashboard | IRemoveDashboard | ISelectActallyDashboard
+
+
+export interface IToggleTodoCopleted {
+    type: 'TOOGLE_TODO_COMPLETED',
+    payload: {
+        itemId: number
+        sectionId: number
+        todoId: number
+    }
+}
+export const ToggleTodoCopleted = (
+    itemId: number,
+    sectionId: number,
+    todoId: number): IToggleTodoCopleted  => {
+    return {
+        type: 'TOOGLE_TODO_COMPLETED',
+        payload: {
+            itemId: itemId,
+            sectionId: sectionId,
+            todoId: todoId,
+        }
+    }
+}
+
+
+export type dashboardListActionType = 
+    IAddDashboard | 
+    IRemoveDashboard | 
+    ISelectActallyDashboard | 
+    IToggleTodoCopleted
