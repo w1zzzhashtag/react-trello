@@ -10,19 +10,7 @@ export interface IStateItems {
     desc: string
     url: string
     imageUrl: string
-    sections: IStateItemsSections[]
-}
-
-export interface IStateItemsSections {
-    id: number
-    name: string
-    todos: IStateItemsSectionsTodos[]
-}
-
-export interface IStateItemsSectionsTodos {
-    id: number
-    name: string
-    completed: boolean
+    
 }
 
 export interface IDashboardPayload {
