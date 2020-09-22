@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils'
 import {IState} from './../../types/todosTypes'
 import {todosActionType} from './../actions/todosActions'
 

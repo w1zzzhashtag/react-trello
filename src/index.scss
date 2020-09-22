@@ -186,13 +186,24 @@ code {
     top: 500px;
     height: 1000px;
     background-color: #fff;
+    .container {
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        width: .75rem;
+        height:.75rem;
+        background: rgba(#111,0.87);
+      }
+      &::-webkit-scrollbar-thumb {
+        background:#F44336;
+      }
+    }
   }
   &__inner {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    overflow-x: auto;
-    padding: 1rem 0;
+    padding: 2rem 0;
+    // width: 3000px;
   }
   &__section {
     display: flex;

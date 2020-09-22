@@ -8,6 +8,12 @@ import {
 } from './components'
 
 
+// TODO:
+// - Реализовать добавление секции
+// - Реализовать перетаскивание блоков (drag&drop)
+// - Сохранение данных и изъятие из localStorage
+
+
 const App:React.FC = () => {
   const [openDashboardPopup, setOpenDashboardPopup] = React.useState<boolean>(false) 
 
