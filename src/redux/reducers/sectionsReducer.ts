@@ -1,5 +1,5 @@
 import {IState} from './../../types/setctionsTypes'
-
+import {sectionsActionType} from './../actions/sectionsAction'
 
 const initialState:IState = {
     items: [
@@ -15,8 +15,20 @@ const initialState:IState = {
     ]
 }
 
-const sectionsReducer = (state=initialState, action:any): IState => {
+const sectionsReducer = (state=initialState, action:sectionsActionType): IState => {
     switch(action.type) {
+        case 'ADD_SECTIONS':
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                    {
+                        id: Math.random() + 10,
+                        dashboardId: action.payload.id,
+                        name: action.payload.name
+                    }
+                ]
+            }
         default: return state
     }
 }
