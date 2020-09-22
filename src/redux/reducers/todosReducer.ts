@@ -37,6 +37,20 @@ const initialState:IState = {
 
 const todosReducer = (state=initialState, action: todosActionType): IState => {
     switch(action.type) {
+        case 'ADD_TODO': 
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                    {
+                        id: Math.random() * 10,
+                        dashboardId: action.payload.dashboardId,
+                        sectionId:  action.payload.sectionId,
+                        name:  action.payload.value,
+                        completed: false
+                    }
+                ]
+            }
         case 'TOOGLE_COMPLETED_TODO': 
             return {
                 ...state,

@@ -161,6 +161,25 @@ code {
     height: 500px;
     object-fit: cover;
   }
+  &__back-btn {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 99;
+  }
+  &__add-todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    input {
+      height: 2rem !important;
+      margin-bottom: 0 !important;
+    }
+    &__btn {
+      margin-left: 1rem;
+    }
+  }
   &__container {
     width: 100%;
     position: relative;
@@ -169,7 +188,6 @@ code {
     background-color: #fff;
   }
   &__inner {
-    // width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -213,3 +231,4 @@ code {
     }
   }
 }
+

@@ -1,11 +1,14 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
+import {NavLink, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
+
+import {rootState} from './../../redux/reducers/rootReducer'
 
 import {selectActallyDashboard} from './../../redux/actions/dashboardListAction'
 import {toggleCompletedTodo, removeTodo} from './../../redux/actions/todosActions'
 
-import {rootState} from './../../redux/reducers/rootReducer'
+import AddTodo from './children/AddTodo'
+
 
 const DashboardActually = () => {
     const {id}:any = useParams()
@@ -23,18 +26,22 @@ const DashboardActually = () => {
         dispatch(toggleCompletedTodo(id))
     }
 
-    const todoRemoveClick = (id: number) => {
-        dispatch(removeTodo(id))
+    const todoRemoveClick = (id: number, name: string) => {
+        if(window.confirm(`You really want remove '${name}'`)) {
+            dispatch(removeTodo(id))
+        }
+        
     }
     
     return (
         <>
             {actuallyDashboard?.map(dashboard => (
                 <div key={dashboard.id} className="d-act">
-                    <img 
+                    <NavLink to="/" exact className="d-act__back-btn col btn-floating btn-large waves-effect waves-light red"><i className="material-icons">navigate_before</i></NavLink>
+                     <img 
                         src={dashboard.imageUrl ? dashboard.imageUrl :'https://images.unsplash.com/photo-1516557070061-c3d1653fa646?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'} 
                         alt={dashboard.name}
-                        className="d-act__img" />
+                        className="d-act__img" /> 
                     <div className="d-act__container">
                         <div className="container">
                             <h1>{dashboard.name}</h1>
@@ -61,13 +68,13 @@ const DashboardActually = () => {
                                                                 </label>
                                                                 <i 
                                                                     className="material-icons"
-                                                                    onClick={() => todoRemoveClick(todo.id)}
+                                                                    onClick={() => todoRemoveClick(todo.id, todo.name)}
                                                                 >delete</i>
                                                             </div>
                                                         )
                                                     }
-                                                    
                                                 })}
+                                                <AddTodo dashboardId={dashboard.id} sectionId={section.id} />
                                             </div>
                                         )
                                     }
