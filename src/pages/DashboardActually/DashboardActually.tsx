@@ -3,9 +3,9 @@ import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {selectActallyDashboard} from './../../redux/actions/dashboardListAction'
+import {toggleCompletedTodo, removeTodo} from './../../redux/actions/todosActions'
 
 import {rootState} from './../../redux/reducers/rootReducer'
-import { transcode } from 'buffer'
 
 const DashboardActually = () => {
     const {id}:any = useParams()
@@ -18,6 +18,14 @@ const DashboardActually = () => {
     const actuallyDashboard = useSelector((state: rootState) => state.dashboardList.current)
     const sections = useSelector((state: rootState) => state.sections.items)
     const todos = useSelector((state: rootState) => state.todos.items)
+
+    const todoCompletedChange = (id:number) => {
+        dispatch(toggleCompletedTodo(id))
+    }
+
+    const todoRemoveClick = (id: number) => {
+        dispatch(removeTodo(id))
+    }
     
     return (
         <>
@@ -47,13 +55,13 @@ const DashboardActually = () => {
                                                                     <input 
                                                                         type="checkbox" 
                                                                         checked={todo.completed}
-                                                                        // onChange={() => todoCompletedChange(item.id,section.id, todo.id)}
+                                                                        onChange={() => todoCompletedChange(todo.id)}
                                                                     />
                                                                     <span>{todo.name}</span>
                                                                 </label>
                                                                 <i 
                                                                     className="material-icons"
-                                                                    // onClick={() => todoRemoveClick(item.id,section.id, todo.id)}
+                                                                    onClick={() => todoRemoveClick(todo.id)}
                                                                 >delete</i>
                                                             </div>
                                                         )
@@ -64,31 +72,6 @@ const DashboardActually = () => {
                                         )
                                     }
                                 })}
-                                {/* {item.sections.map(section => (
-                                    <div className="d-act__section" key={section.id}>
-                                        <h6 className="d-act__section-title">
-                                            {section.name}
-                                        </h6>
-                                        {section.todos.map(todo => (
-                                            <div className="d-act__section-item" key={todo.id}>
-                                                <label>
-                                                    <input 
-                                                        type="checkbox" 
-                                                        checked={todo.completed}
-                                                        onChange={() => todoCompletedChange(item.id,section.id, todo.id)}
-                                                    />
-                                                    <span>{todo.name}</span>
-                                                </label>
-                                                <i 
-                                                    className="material-icons"
-                                                    onClick={() => todoRemoveClick(item.id,section.id, todo.id)}
-                                                >delete</i>
-                                            </div>
-                                        ))}
-                                       
-                                    </div>
-                                ))} */}
-                                
                             </div>
                         </div>
                     </div>

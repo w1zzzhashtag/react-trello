@@ -1,5 +1,6 @@
+import { act } from 'react-dom/test-utils'
 import {IState} from './../../types/todosTypes'
-
+import {todosActionType} from './../actions/todosActions'
 
 
 const initialState:IState = {
@@ -34,8 +35,27 @@ const initialState:IState = {
     ]
 }
 
-const todosReducer = (state=initialState, action: any): IState => {
+const todosReducer = (state=initialState, action: todosActionType): IState => {
     switch(action.type) {
+        case 'TOOGLE_COMPLETED_TODO': 
+            return {
+                ...state,
+                items: state.items.map(item => {
+                    if(item.id === action.payload) {
+                        item.completed = !item.completed
+                    }
+                    return item
+                })
+            }
+        case 'REMOVE_TODO':
+            return {
+                ...state,
+                items: state.items.filter(item => {
+                    if(item.id !== action.payload) {
+                        return item
+                    }
+                })
+            }
         default: return state
     }
 }   
